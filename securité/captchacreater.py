@@ -2,6 +2,7 @@ from captcha.image import ImageCaptcha
 from captcha.audio import AudioCaptcha
 #from matplotlib import pyplot as plt
 import random
+import TokenGenerator
 
 
 number_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -55,6 +56,10 @@ def create_random_digital_text(captcha_string_size=10):
     return captcha_string
 
 # Create an image captcha with special text.
+def getTokenUser(user):
+    for u in TokenGenerator.getToken:
+        if u.Email==user:
+            return u.Token
 
 
 def create_image_captcha(captcha_text):
