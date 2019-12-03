@@ -4,7 +4,6 @@ from captcha.audio import AudioCaptcha
 import random
 import TokenGenerator
 
-
 number_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 alphabet_lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
@@ -49,17 +48,13 @@ def create_random_digital_text(captcha_string_size=10):
 
     captcha_string = ''
 
-    # Convert the digital list to string.
+    #Convert the digital list to string.
     for item in captcha_string_list:
-        captcha_string += str(item)
+       captcha_string += str(item)
 
     return captcha_string
 
 # Create an image captcha with special text.
-def getTokenUser(user):
-    for u in TokenGenerator.getToken:
-        if u.Email==user:
-            return u.Token
 
 
 def create_image_captcha(captcha_text):
@@ -107,4 +102,5 @@ def create_audio_captcha():
 
 
 if __name__ == '__main__':
-    create_image_captcha("4528")
+    x=str(TokenGenerator.getTokenUser('test1@gmail.com'))
+    create_image_captcha(x)

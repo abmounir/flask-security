@@ -25,4 +25,15 @@ for u in getToken:
     
 db.session.commit()
    
-        
+     
+def getTokenUser(user):
+    x=''
+    for b in getToken:
+       if str(b.Email)==user:
+          x=str(b.Token)
+          print(x)
+    return x
+print(getTokenUser('test2@gmail.com'))
+
+
+            
