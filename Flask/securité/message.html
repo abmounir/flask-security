@@ -16,23 +16,22 @@
         }
 
         .message {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
+
+            text-align: center;
         }
 
         .verify {
+            margin: 10px;
             border: none;
             background-color: cornflowerblue;
             color: black;
             border-radius: 5px;
         }
 
-        h1 {
-            text-align: center;
-            width: 50%;
-            background-color: aliceblue;
-            color: black;
+        img {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
         }
     </style>
 </head>
@@ -40,10 +39,14 @@
 <body>
     <div class="message">
         <h3>Hello Mr : Insert name</h3>
+        <br>
         <h4>This is your token </h4>
-        <h1>2545</h1>
+        <img src="cid:token">
+        <br>
         <br>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero veniam commodi .</p>
+        <br>
+        <br>
         <button class="verify">Verify my account</button>
     </div>
 

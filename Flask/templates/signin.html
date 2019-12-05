@@ -9,17 +9,17 @@
 <body>
     <div class="main-block">
         <h1>Sign in now !</h1>
-        <form method="POST" action="/home">
+        <form method="POST" action="/token">
             <hr>
             <div class="account-infos">
-                <input type="text" name="name" id="name" placeholder="Name" required />
-                <input type="password" name="name" id="name" placeholder="Password" required />
+                <input type="text" name="email" id="name" placeholder="email" required />
+                <input type="password" name="passw" id="name" placeholder="Password" required />
             </div>
 
             <hr>
 
             <div class="btn-block">
-                <button type="submit" onClick="redirect()">Connect </button>
+                <button type="submit">Connect </button>
                 <div class="sign-in"><a href="/">Sign up</a></div>
             </div>
         </form>
