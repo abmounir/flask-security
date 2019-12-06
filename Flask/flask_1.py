@@ -2,6 +2,7 @@ from flask import Flask, redirect, url_for, render_template, request, session
 from securité.captchacreater import create_image_captcha
 from securité.sendmail_func import sendMail
 from securité.TokenGenerator import getTokenUser
+from securité import Main_Page
 from flask import g
 import os
 
@@ -19,7 +20,7 @@ def home():
     password = request.form["passw"]
     if(name != "mehdi"):
         return "<H1> the name is incorrect a khoya </H1>"
-    elif(password != "mmeehhddii"):
+    elif(password != "123"):
         return "<H1> hna nba3tolo la page ta3 token XD </H1>"
 
     return render_template("signin.html")
@@ -67,6 +68,8 @@ def resendToken():
     f.close()
     sendMail(session['userMail'], "Bank Token", ms)
     return render_template("token.html")
+
+
 
 
 if __name__ == "__main__":
