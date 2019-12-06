@@ -29,11 +29,11 @@ class User(db.Model):
     password = db.Column('password', db.String)
 
 
-users = User.query.all()
-print('|\tMail\t|\tPassword\t|')
-for u in users:
-    print('|\t'+str(u.mail)+'    |\t'+str(u.password)+'\t|')
-print('________________________')
+# users = User.query.all()
+# print('|\tMail\t|\tPassword\t|')
+# for u in users:
+#    print('|\t'+str(u.mail)+'    |\t'+str(u.password)+'\t|')
+# print('________________________')
 
 
 # Insert  #add()
