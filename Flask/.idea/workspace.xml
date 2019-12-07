@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="206e9493-f8c5-4807-8f04-a42d675e3443" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/css/BankStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/MainPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainPage.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/captcha_1254.png" beforeDir="false" afterPath="$PROJECT_DIR$/captcha_1254.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/captcha_8250.png" beforeDir="false" afterPath="$PROJECT_DIR$/captcha_8250.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_1.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -70,6 +71,7 @@
       <option name="presentableId" value="Default" />
       <updated>1575648811026</updated>
       <workItem from="1575648812900" duration="9435000" />
+      <workItem from="1575725560573" duration="1809000" />
     </task>
     <servers />
   </component>
@@ -81,7 +83,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

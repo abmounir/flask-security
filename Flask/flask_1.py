@@ -2,7 +2,7 @@ from flask import Flask, redirect, url_for, render_template, request, session
 from securité.captchacreater import create_image_captcha
 from securité.sendmail_func import sendMail
 from securité.TokenGenerator import getTokenUser
-from securité import Main_Page
+
 from flask import g
 import os
 
