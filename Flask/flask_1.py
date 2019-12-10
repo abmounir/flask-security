@@ -2,6 +2,7 @@ from flask import Flask, redirect, url_for, render_template, request, session
 from securité.captchacreater import create_image_captcha
 from securité.sendmail_func import sendMail
 from securité.TokenGenerator import getTokenUser
+from securité.MainPage import getClientData
 
 from flask import g
 import os
@@ -35,10 +36,12 @@ def register():
 @app.route("/account", methods=['POST'])
 def account():
     tkn = request.form["token"]
-
+    z= getClientData(session['userMail'])
     user_tkn = getTokenUser(session['userMail'])
     if tkn == user_tkn:
-        return "<h3> wlcm to your acc sir <h3>"
+       
+
+        return render_template("MainPage.html",balance=z[2])
     else:
         return "wrong token sir"
 
