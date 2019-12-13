@@ -2,6 +2,7 @@ from flask import Flask, redirect, url_for, render_template, request, session
 from securité.captchacreater import create_image_captcha
 from securité.sendmail_func import sendMail
 from securité.TokenGenerator import getTokenUser
+from securité.mysqlhostedwithpython import getUserPassword
 from securité.MainPage import getClientData
 
 from flask import g
@@ -19,6 +20,7 @@ def home():
     mail = request.form["email"]
     session['userMail'] = mail
     password = request.form["passw"]
+
     if(name != "mehdi"):
         return "<H1> the name is incorrect a khoya </H1>"
     elif(password != "123"):
@@ -36,19 +38,18 @@ def register():
 @app.route("/account", methods=['POST'])
 def account():
     tkn = request.form["token"]
-    z= getClientData(session['userMail'])
+    z = getClientData(session['userMail'])
     user_tkn = getTokenUser(session['userMail'])
     if tkn == user_tkn:
-       
 
-        return render_template("MainPage.html",balance=z[2])
+        return render_template("MainPage.html", balance=z[2], Incomes=z[3], Expenses=z[4])
     else:
         return "wrong token sir"
 
 
 @app.route("/signin/")
 def signin():
-    return render_template("signin.html")
+    return render_template("signin.html", wrongpassword='')
 
 
 @app.route("/token", methods=['POST'])
@@ -59,9 +60,12 @@ def token():
     f.close()
     mail = request.form["email"]
     session['userMail'] = mail
-    print("user session is "+session['userMail'])
-    sendMail(mail, "Bank Token", ms)
-    return render_template("token.html")
+    password = request.form["passw"]
+
+    if(password == getUserPassword(mail)):
+        sendMail(mail, "Bank Token", ms)
+        return render_template("token.html")
+    return render_template("signin.html", wrongpassword='Invalid Password Or Mail retry !')
 
 
 @app.route("/resend")
@@ -71,8 +75,6 @@ def resendToken():
     f.close()
     sendMail(session['userMail'], "Bank Token", ms)
     return render_template("token.html")
-
-
 
 
 if __name__ == "__main__":

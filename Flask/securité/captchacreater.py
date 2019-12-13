@@ -71,7 +71,3 @@ def create_image_captcha(captcha_text):
     image_file = "./captcha_"+captcha_text + ".png"
     image_captcha.write(captcha_text, image_file)
     return image_file
-
-
-x = str(TokenGenerator.getTokenUser('test1@gmail.com'))
-create_image_captcha(x)

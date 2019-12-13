@@ -7,41 +7,45 @@ from array import array
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Database hosted in remotemysql.com
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root@localhost:3306/client"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://9EDsNxvuTb:Wz0VOBdaZx@remotemysql.com:3306/9EDsNxvuTb"
+
+
+# email and password : "mysql://Vpvv8swDIN:Lwj5xUAFl8@remotemysql.com:3306/Vpvv8swDIN" table name : 'password'
+# email and token    : "mysql://RE7esJnNWs:xsODaDhhpG@remotemysql.com:3306/RE7esJnNWs" table name : 'token'
+# email and infos    : "mysql://9EDsNxvuTb:Wz0VOBdaZx@remotemysql.com:3306/9EDsNxvuTb" table name : 'utilisateur'
+
+
 db = SQLAlchemy(app)
 
 
 class Client(db.Model):
 
-    __tablename__ = 'client'
+    __tablename__ = 'utilisateur'
 
-    Email = db.Column('Email', db.String, primary_key=True)
-    Name = db.Column('Name', db.String)
-    LastName = db.Column('LastName', db.String)
-    CurrentBalance = db.Column('CurrentBalance', db.String)
-    Incomes = db.Column('Incomes', db.String)
-    Expenses = db.Column('Expenses', db.String)
-    
+    Email = db.Column('email', db.String, primary_key=True)
+    Name = db.Column('nom', db.String)
+    LastName = db.Column('prénom', db.String)
+    CurrentBalance = db.Column('balance', db.String)
+    Incomes = db.Column('incomes', db.String)
+    Expenses = db.Column('expenses', db.String)
+
+
 getData = Client.query.all()
-#for u in getData:
-  #  print(str(u.Name)+'\t'+'|\t'+str(u.CurrentBalance))
 
-db.session.commit()
+
 def getClientData(user):
-    x =[]
+
+    x = []
     for b in getData:
 
         if str(b.Email) == user:
-            x.append(str(b.Name)) 
+            x.append(str(b.Name))
             x.append(str(b.LastName))
-            x.append( str(b.CurrentBalance))
-            x.append( str(b.Incomes))
+            x.append(str(b.CurrentBalance))
+            x.append(str(b.Incomes))
             x.append(str(b.Expenses))
             print(x)
         else:
-           print('non')   
+            print('non')
 
-            
     return x
-getClientData('zaidasouhil@gmail.com')
-
