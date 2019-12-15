@@ -1,18 +1,17 @@
 from flask import Flask, redirect, url_for, render_template, request, session
-from securité.captchacreater import create_image_captcha
-from securité.sendmail_func import sendMail
-from securité.TokenGenerator import getTokenUser
-from securité.mysqlhostedwithpython import getUserPassword
-from securité.MainPage import getClientData
-
+from captchacreater import create_image_captcha
+from sendmail_func import sendMail
+from TokenGenerator import getTokenUser,setToken
+from mysqlhostedwithpython import getUserPassword,setUserData
+from MainPage import getClientData,setClientData
 from flask import g
 import os
+from models import app,db
 
 
-app = Flask(__name__)
+
 
 app.secret_key = os.urandom(21)
-
 
 @app.route("/home", methods=['POST'])
 def home():
@@ -29,8 +28,17 @@ def home():
     return render_template("signin.html")
 
 
-@app.route("/")
+@app.route("/", methods=['POST','GET'])
 def register():
+    email = request.form.get('email')
+    name=request.form.get('name')
+    password=request.form.get('passw')
+    prénom=request.form.get('prénom')
+
+    setToken(email=email)
+    setUserData(email=email,login=password)
+    setClientData(email=email,nom=name,prénom=prénom,sex='H',balance='0.0',incomes='0.0',expenses='0.0')
+
 
     return render_template("register.html")
 
