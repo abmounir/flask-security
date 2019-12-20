@@ -14,7 +14,7 @@ from models import app,db
 
 app.secret_key = os.urandom(21)
 #session.permanent = True
-app.permanent_session_lifetime = timedelta(minutes=1)
+app.permanent_session_lifetime = timedelta(minutes=1) #will expire in 1 minute
 ########################################################################################
 @app.route("/home", methods=['POST'])
 def home():
