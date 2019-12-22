@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from models import app,User,db
+import time
 # @Author : Mehdi Yc
 
 getPassword = User.query.all()
@@ -8,22 +9,30 @@ getPassword = User.query.all()
 
 def getUserPassword(user):
 
-    x = ''
-    for b in getPassword:
+	x = ''
+	for b in getPassword:
 
-        if str(b.mail) == user:
-            x = str(b.password)
+		if str(b.mail) == user:
+			x = str(b.password)
 
-    return x
+	return x
 
 
 
 def setUserData(email,login):
 	new_user=User(mail=email,password=login)
-	db.session.add(new_user)
-	db.session.commit()
+	if new_user:
+		db.session.add(new_user)
+		db.session.commit()
+		time.sleep(1)
+		for x in getPassword:
+			if str(x.mail)=='tst@aa.aa' :
+				deleted=User.query.filter_by(mail='tst@aa.aa').delete()
+				if deleted:
+					#db.session.delete(deleted)
+					db.session.commit()
 
-
+	return new_user
 
 
 #print(getUserPassword("mehdidouy@gmail.com"))
