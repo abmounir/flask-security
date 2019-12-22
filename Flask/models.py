@@ -36,6 +36,7 @@ class Client(db.Model):
 
 	__bind_key__='clientInfo_db'
 	__tablename__ = 'utilisateur2'
+	
 	e=random.randint(1,10000)
 	Email = db.Column('email', db.String, primary_key=True,default='tst'+str(e)+'@test.tst')
 	Name = db.Column('nom', db.String)
