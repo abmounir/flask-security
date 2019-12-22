@@ -64,7 +64,7 @@ def signin():
 	return render_template("signin.html", wrongpassword='')
 
 
-@app.route("/token", methods=['POST'])
+@app.route("/signin", methods=['POST'])
 def token():
 
 	f = open("./securité/message.html", "r")
