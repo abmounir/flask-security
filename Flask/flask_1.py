@@ -1,7 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, request, session, url_for, flash
 from captchacreater import create_image_captcha
 from sendmail_func import sendMail, validMail
-from TokenGenerator import getTokenUser, setToken
+from TokenGenerator import getTokenUser, setToken,ChangeTokenUser
 from mysqlhostedwithpython import getUserPassword, setUserData, init
 from MainPage import getClientData, setClientData
 from flask import g
@@ -47,6 +47,7 @@ def account():
         z = getClientData(session['userMail'])
         user_tkn = getTokenUser(session['userMail'])
         if tkn == user_tkn:
+            ChangeTokenUser(session['userMail'])
             return render_template("MainPage.html", balance=z[2], Incomes=z[3], Expenses=z[4])
         else:
             return "wrong token sir"
