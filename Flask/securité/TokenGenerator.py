@@ -31,6 +31,3 @@ def getTokenUser(user):
             x = str(b.Token)
 
     return x
-
-
-print(getTokenUser("mehdidouy@gmail.com"))

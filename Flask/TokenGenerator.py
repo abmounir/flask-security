@@ -1,7 +1,8 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-import random,time
-from models import app,db,ConnectClient
+import random
+import time
+from models import app, db, ConnectClient
 # @Author : Mehdi Yc
 
 getToken = ConnectClient.query.all()
@@ -9,31 +10,34 @@ getToken = ConnectClient.query.all()
 
 def getTokenUser(user):
 
-	x = ''
-	for b in getToken:
+    x = ''
+    for b in getToken:
 
-		if str(b.Email) == user:
-			x = str(b.Token)
+        if str(b.Email) == user:
+            x = str(b.Token)
 
-	return x
+    return x
+
 
 def setToken(email):
-	token=random.randint(1000,9999)
-	new_token=ConnectClient(Email=email,Token=token)
-	if new_token:
-		db.session.add(new_token)
-		db.session.commit()
-		time.sleep(1)
-		for x in getToken:
-			if str(x.Email)=='tst@aa.aa' :
-				deleted=ConnectClient.query.filter_by(Email='tst@aa.aa').delete()
-				if deleted:
-					#db.session.delete(deleted)
-					db.session.commit()
-	return new_token
+    token = random.randint(1000, 9999)
+    new_token = ConnectClient(Email=email, Token=token)
+    if new_token:
+        db.session.add(new_token)
+        db.session.commit()
+        time.sleep(1)
 
-
-	#if new_token:
-	 #   db.session.add(new_token)
-	  #  db.session.commit()
-	#return new_token
+    db.session.commit()
+    return new_token
+def ChangeTokenUser(user):
+    token = random.randint(1000, 9999)
+    l_user = ConnectClient.query.filter_by(Email=user).first()
+    l_user.Token = token
+    db.session.commit()
+    db.session.refresh(l_user)
+    print(l_user)
+    db.session.commit()
+       # if new_token:
+    #   db.session.add(new_token)
+    #  db.session.commit()
+    # return new_token
