@@ -29,7 +29,7 @@ def register():
     print(email)
     if(email is not None):
         if(getUserPassword(decode(email, 12), init()) == ''):
-            if(validMail(email)):
+            #if(validMail(email)):
             tk = setToken(email=encode(email, 11))
 
             ud = setUserData(email=encode(email, 12), login=encode(
@@ -38,8 +38,8 @@ def register():
             cd = setClientData(email=encode(email, 13), nom=encode(name, 13), prénom=encode(prénom, 13),
                                sex=sexe, balance='0.0', incomes='0.0', expenses='0.0')
             return render_template("signin.html", wrongpassword="")
-            else:
-                return render_template("register.html", error="entrez un mail valide ! ")
+            #else:
+                #return render_template("register.html", error="entrez un mail valide ! ")
         else:
             return render_template("register.html", error="votre mail existe deja")
 
