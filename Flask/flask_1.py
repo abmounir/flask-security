@@ -13,7 +13,8 @@ from Cryptage import encode, decode
 
 
 app.secret_key = os.urandom(21)
-# session.permanent = True
+#session.permanent = True
+app.permanent_session_lifetime = timedelta(minutes=1) #will expire in 1 minute
 
 ########################################################################################
 
@@ -29,14 +30,14 @@ def register():
     if(email is not None):
         if(getUserPassword(decode(email, 12), init()) == ''):
             if(validMail(email)):
-                tk = setToken(email=encode(email, 11))
+            tk = setToken(email=encode(email, 11))
 
-                ud = setUserData(email=encode(email, 12), login=encode(
-                    password, 12), passwords=init())
+            ud = setUserData(email=encode(email, 12), login=encode(
+                password, 12), passwords=init())
 
-                cd = setClientData(email=encode(email, 13), nom=encode(name, 13), prénom=encode(prénom, 13),
-                                   sex='H', balance='0.0', incomes='0.0', expenses='0.0')
-                return render_template("signin.html", wrongpassword="")
+            cd = setClientData(email=encode(email, 13), nom=encode(name, 13), prénom=encode(prénom, 13),
+                               sex='H', balance='0.0', incomes='0.0', expenses='0.0')
+            return render_template("signin.html", wrongpassword="")
             else:
                 return render_template("register.html", error="entrez un mail valide ! ")
         else:
@@ -73,19 +74,20 @@ def token():
     f.close()
     mail = request.form["email"]
     z = getClientData(encode(request.form["email"], 13))
-    ms = str.replace(ms, "name", decode(z[0], 13))
-    print(ms)
-    print("coded mail : "+mail)
-    print("coded mail : "+encode(mail, 11))
-    print("coded mail : "+encode(mail, 12))
-    print("coded mail : "+encode(mail, 13))
-    session['userMail'] = mail
-    password = request.form["passw"]
-    print("password entred is : " + password)
-    print("password is : "+decode(str(getUserPassword(encode(mail, 12), init())), 12))
-    if(password == decode(str(getUserPassword(encode(mail, 12), init())), 12)):
-        sendMail(mail, "Bank Token", ms)
-        return render_template("token.html", error='')
+    if z:
+        ms = str.replace(ms, "name", decode(z[0], 13))
+        print(ms)
+        print("coded mail : "+mail)
+        print("coded mail : "+encode(mail, 11))
+        print("coded mail : "+encode(mail, 12))
+        print("coded mail : "+encode(mail, 13))
+        session['userMail'] = mail
+        password = request.form["passw"]
+        print("password entred is : " + password)
+        print("password is : "+decode(str(getUserPassword(encode(mail, 12), init())), 12))
+        if(password == decode(str(getUserPassword(encode(mail, 12), init())), 12)):
+            sendMail(mail, "Bank Token", ms)
+            return render_template("token.html", error='')
     return render_template("signin.html", wrongpassword='Invalid Password Or Mail retry !')
 
 

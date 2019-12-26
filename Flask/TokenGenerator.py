@@ -25,7 +25,7 @@ def setToken(email):
     if new_token:
         db.session.add(new_token)
         db.session.commit()
-        time.sleep(1)
+        #time.sleep(1)
 
     db.session.commit()
     return new_token

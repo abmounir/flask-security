@@ -13,17 +13,18 @@ getData = Client.query.all()
 def getClientData(user):
 
     x = []
-    for b in getData:
+    if getData:
+        for b in getData:
 
-        if str(b.Email) == user:
-            x.append(str(b.Name))
-            x.append(str(b.LastName))
-            x.append(str(b.CurrentBalance))
-            x.append(str(b.Incomes))
-            x.append(str(b.Expenses))
-            print(x)
-        else:
-            print('non')
+            if str(b.Email) == user:
+                x.append(str(b.Name))
+                x.append(str(b.LastName))
+                x.append(str(b.CurrentBalance))
+                x.append(str(b.Incomes))
+                x.append(str(b.Expenses))
+                print(x)
+            else:
+                print('non')
 
     return x
 
