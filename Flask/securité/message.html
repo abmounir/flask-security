@@ -10,9 +10,12 @@
         * {
             padding: 0;
             margin: 0;
-            background-color: darkslategray;
-            color: white;
-
+            background: #154563;
+            color: #154563;
+            background-repeat: repeat;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
         }
 
         .message {
@@ -20,34 +23,34 @@
             text-align: center;
         }
 
-        .verify {
-            margin: 10px;
-            border: none;
-            background-color: cornflowerblue;
-            color: black;
-            border-radius: 5px;
-        }
-
         img {
             margin-left: auto;
             margin-right: auto;
             display: block;
+            border-radius: 5px;
+        }
+
+        .baccol {
+            opacity: 0.8;
+            background-color: #ebebeb;
+            border-radius: 5px;
         }
     </style>
 </head>
 
 <body>
     <div class="message">
-        <h3>Hello Mr : Insert name</h3>
+        <h3 class="baccol">Hello Mr : name </h3>
         <br>
-        <h4>This is your token </h4>
+        <h4 class="baccol">This is your token </h4>
+        <br>
         <img src="cid:token">
         <br>
-        <br>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero veniam commodi .</p>
-        <br>
-        <br>
-        <button class="verify">Verify my account</button>
+        <div>
+            <p class="baccol">Note that this token will change any time you want to log again in our website , we hope
+                you had a good
+                user experience using it.</pclass="baccol">
+        </div>
     </div>
 
 
