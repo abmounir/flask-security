@@ -29,6 +29,8 @@ def setToken(email):
 
     db.session.commit()
     return new_token
+
+
 def ChangeTokenUser(user):
     token = random.randint(1000, 9999)
     l_user = ConnectClient.query.filter_by(Email=user).first()
@@ -37,7 +39,7 @@ def ChangeTokenUser(user):
     db.session.refresh(l_user)
     print(l_user)
     db.session.commit()
-       # if new_token:
+    # if new_token:
     #   db.session.add(new_token)
     #  db.session.commit()
     # return new_token

@@ -7,6 +7,7 @@ from random import randint
 from validate_email import validate_email
 from securité.captchacreater import create_image_captcha
 from securité import TokenGenerator
+from Cryptage import encode, decode
 
 
 def validMail(mail):
@@ -26,7 +27,8 @@ def sendMail(sendTo, subject, message):
     msg.attach(MIMEText(message, 'html'))
 
     # the image is in the current directory
-    x = str(TokenGenerator.getTokenUser(sendTo))
+    x = str(TokenGenerator.getTokenUser(encode(sendTo, 11)))
+
     fp = open(create_image_captcha(x), 'rb')
     msgImage = MIMEImage(fp.read())
     fp.close()
@@ -40,6 +42,3 @@ def sendMail(sendTo, subject, message):
     text = msg.as_string()
     server.sendmail(email, sendTo, text)
     server.quit()
-
-
-#sendMail("mehdidouy@gmail.com", 'Math problem', ms)

@@ -4,33 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <title>MyBank</title>
-    <link rel="stylesheet" href="../static/css/BankStyle.css">
-    <h1 class="title">Account</h1>
+    <link rel="stylesheet" href="../static/css/main.css">
+
 
 
 
 <body>
-    <div class="Profile-Image">
-        <img src="../static/img/so.jpg" height="150px" width="150px" />
-    </div>
-    <div class="main-block">
-        <div class="CurrentBalance">
-            <h4> Current Balance</h4>
-            <h1>{{balance}}$</h1>
+    <div class="bg">
+        <div class="disconnect-b">
+            <h3><a href="signin.html">disconnect</a></h3>
         </div>
+        <div class="infos">
+            <div class="det-infos">
+                <div class="front">
+                    <h3> Name : </h3>
+                    <h3>{{name}}</h3>
+                    <hr>
+                    <h3> First name : </h3>
+                    <h3>{{firstname}}</h3>
+                    <br>
+                    <div class="hover-to-display">
+                    </div>
 
-        <div>
-            <div class="left">
-                <h1>{{Incomes}}$</h1>
-                <h4>Income</h4>
+                </div>
+                <div>
+
+                </div>
+            </div>
+            <div class="det-infos">
+                <br><br>
+                <h3> Current Balance</h3>
+                <h3>{{balance}} $</h3>
+            </div>
+            <div class="det-infos">
+                <h3>Income</h3>
+                <h3>{{Incomes}} $</h3>
+                <hr>
+                <h3>Expenses</h3>
+                <h3>{{Expenses}} $</h3>
             </div>
 
-            <div class="right">
-                <h1>{{Expenses}}$</h1>
-                <h4>Expenses</h4>
-            </div>
         </div>
     </div>
+
+
 
     <div>
 
