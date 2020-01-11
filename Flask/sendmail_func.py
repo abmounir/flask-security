@@ -5,8 +5,8 @@ from email.mime.image import MIMEImage
 from random import seed
 from random import randint
 from validate_email import validate_email
-from securité.captchacreater import create_image_captcha
-from securité import TokenGenerator
+from captchacreater import create_image_captcha
+import TokenGenerator
 from Cryptage import encode, decode
 
 

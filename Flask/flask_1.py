@@ -69,7 +69,7 @@ def signin():
 
 @app.route("/signin", methods=['POST'])
 def token():
-    f = open("./securité/message.html", "r")
+    f = open("./message.html", "r")
     ms = f.read()
     f.close()
     mail = request.form["email"]
@@ -93,7 +93,7 @@ def token():
 
 @app.route("/resend")
 def resendToken():
-    f = open("./securité/message.html", "r")
+    f = open("./message.html", "r")
     ms = f.read()
     f.close()
     sendMail(session['userMail'], "Bank Token", ms)

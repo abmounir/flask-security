@@ -8,9 +8,9 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Database hosted in remotemysql.com
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://Vpvv8swDIN:Lwj5xUAFl8@remotemysql.com:3306/Vpvv8swDIN"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:toor@localhost:3306/db1"
 app.config['SQLALCHEMY_BINDS'] = {'token_db': 'mysql://mounir:toor@169.254.131.199:3306/RE7esJnNWs',
-                                  'clientInfo_db': 'mysql://9EDsNxvuTb:Wz0VOBdaZx@remotemysql.com:3306/9EDsNxvuTb'}
+                                  'clientInfo_db': 'mysql://root:toor@localhost:3306/db3'}
 
 
 db = SQLAlchemy(app)
